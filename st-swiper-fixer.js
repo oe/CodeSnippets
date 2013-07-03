@@ -1,4 +1,4 @@
-// when use sencha touch's swipe event, the view(screen) will scroll most time at the same time.
+// when using sencha touch's swipe event, the view(screen) will scroll most time at the same time.
 // By adding this sniipet to the view's listeners will fix it.
 
 listeners: {
