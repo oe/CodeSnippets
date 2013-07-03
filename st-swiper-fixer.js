@@ -15,7 +15,7 @@ listeners: {
             deltaX = Math.abs(e.pageX - this.startX),
             deltaY = Math.abs(e.pageY - this.startY);
             if (deltaX > 8 * deltaY && deltaY < 5 && deltaX > 8){
-                Ext.getCmp('list').setScrollable(false); // 'list' should be your view's id
+                this.setScrollable(false);
                 this.swiped = true;
             }
         }
@@ -26,7 +26,7 @@ listeners: {
             this.swiped = false;
         }
         this.moveTimes = 0;
-        Ext.getCmp('list').setScrollable(true); // 'list' should be your view's id
+        this.setScrollable(true);
         console.log('touch end');
     }
 }
