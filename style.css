@@ -1,0 +1,13 @@
+/*clear float*/
+
+.wrapper {
+	/*
+		//this is al
+		overflow: auto;
+	*/
+}
+
+.wrapper:before, .wrapper:after {
+	content: ' ';
+	display: table;
+}

@@ -68,7 +68,7 @@ function extendDeep (parent, child) {
 	}
 	return child;
 }
-
+//HTML encode & decode
 function htmlEncode( html ) {
     return document.createElement( 'a' ).appendChild( 
         document.createTextNode( html ) ).parentNode.innerHTML;
@@ -78,3 +78,43 @@ function htmlDecode( html ) {
     var a = document.createElement( 'a' ); a.innerHTML = html;
     return ('textContent' in a) ? a.textContent : a.innerText;
 }
+
+//forward html event
+$(".box").click(function(){
+     $(this).toggleClass("highlight");
+});
+
+
+function passThrough(e) {
+    $(".box").each(function() {
+       // check if clicked point (taken from event) is inside element
+       var mouseX = e.pageX;
+       var mouseY = e.pageY;
+       var offset = $(this).offset();
+       var width = $(this).width();
+       var height = $(this).height();
+
+       if (mouseX > offset.left && mouseX < offset.left+width 
+           && mouseY > offset.top && mouseY < offset.top+height)
+         $(this).click(); // force click event
+    });
+}
+
+$("#shield").click(passThrough);
+
+var dthen = new Date();
+		
+setInterval(function(){
+	dNow = new Date();
+	$('#shield').css('height', ((dNow.getSeconds()+(dNow.getMilliseconds()/1000))*50)%300 +'px');
+},10)
+
+var doPassThrough = true;
+$('input').click(function(){
+  doPassThrough =  !doPassThrough;
+  if (doPassThrough){
+    $("#shield").click(passThrough);
+  } else {
+    $('#shield').unbind('click', passThrough);
+  }
+});
