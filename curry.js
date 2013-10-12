@@ -1,3 +1,13 @@
+/*
+keyCode
+Windows:
+	Escape 27; Tab 9; CapsLock 20; Shift 16; Ctrl 17;
+	Alt 18; Win 91;Enter 13; Backspace 8; Delete 46;
+Mac:
+
+*/
+
+
 /*Make a function step by step
  *	function add(a,b){return a + b};
  *	//add5 is a function like add but with an argument 5

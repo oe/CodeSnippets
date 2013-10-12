@@ -55,3 +55,10 @@
 0.0.0.0 u291014.778669.com
 0.0.0.0 new.egooad.com
 0.0.0.0 cs.twcczhu.com
+
+
+#some website with image referer check
+http://imgsrc.baidu.com/*
+http://*.bdimg.com/*
+http://*.qpic.cn/*
+http://*.photo.sina.com.cn/*

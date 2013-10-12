@@ -1,5 +1,0 @@
-#some website with image referer check
-http://imgsrc.baidu.com/*
-http://*.bdimg.com/*
-http://*.qpic.cn/*
-http://*.photo.sina.com.cn/*

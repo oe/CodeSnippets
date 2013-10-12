@@ -1,12 +1,10 @@
 /*clear float*/
 
 .wrapper {
-	/*
-		//this is al
-		overflow: auto;
-	*/
+	/*this is for all*/
+	overflow: auto;
 }
-
+/* or use this */
 .wrapper:before, .wrapper:after {
 	content: ' ';
 	display: table;
