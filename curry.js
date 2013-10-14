@@ -3,7 +3,8 @@ keyCode
 Windows:
 	Escape 27; Tab 9; CapsLock 20; Shift 16; Ctrl 17;
 	Alt 18; Win 91;Enter 13; Backspace 8; Delete 46;
-Mac:
+Mac:Escape 27; Tab 9; CapsLock 20; Shift 16; Ctrl 17;
+	Alt 18; CMD 91;Enter 13; No Backspace; Delete 8;
 
 */
 
