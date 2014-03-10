@@ -33,7 +33,7 @@ body {
 	margin: 0;
 }
 #container {
-	overflow-x: hidden; //禁止container横向滚动
+	overflow-x: hidden; /*禁止container横向滚动*/
 }
 ```
 
