@@ -35,6 +35,7 @@ body {
 #container {
 	overflow-x: hidden; //禁止container横向滚动
 }
+```
 
 ### 元素在屏幕垂直居中居中
 由于Android暂时不支持`display:table;`及`display:table-cell`属性，故不能适用此技巧使元素垂直居中
