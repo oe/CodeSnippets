@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>dialog</title>
-	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<!-- <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> -->
+	<script src="zepto.min.js"></script>
 	<style>
 		.m-dialog-wrapper {
 			position: fixed;
@@ -23,18 +24,51 @@
 			opacity: 1;
 			visibility: visible;
 		}
-		.m-dialog-wrapper .m-dialog {
+		.m-dialog-wrapper .m-dialog{
 			width: 80%;
 			max-width: 300px;
 			margin: 0 auto;
 			margin-top: 100px;
 			color: #333;
-			font-style: 14px;
-			background-color: #fff;
+			font-size: 16px;
+			background-color: #f7f7f7;
 			border-radius: 6px;
 			text-align: center;
 			border-collapse: collapse;
 			overflow: hidden;
+		}
+		.m-popup-wrapper{
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			position: fixed;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			height: 0;
+			opacity: 0;
+			z-index: 9998;
+			text-align: center;
+			-webkit-transition: bottom .2s linear,opacity .2s linear;
+			transition: bottom .2s linear,opacity .2s linear;
+		}
+		.m-popup-wrapper.show {
+			bottom: 100px;
+			opacity: 1;
+			height: auto;
+		}
+		.m-popup-wrapper .m-content {
+			position: relative;
+			display: inline-block;
+			max-width: 90%;
+			min-width: 100px;
+			padding: 8px;
+			border-radius: 6px;
+			box-shadow:0 0 4px #eee;
+			border: 1px solid #ccc;
+			font-size: 16px;
+			color: #333;
+			word-break: break-all;
+			background-color: #f7f7f7;
 		}
 		.m-dialog-wrapper .m-dialog .m-title {
 			padding: 8px;
@@ -68,6 +102,9 @@
 	</style>
 </head>
 <body>
+<!-- <div class="m-popup-wrapper show">
+	<div class="m-content">heelo</div>
+</div> -->
 	<script>
 		(function ($) {
 			var defaultConfigs = {
@@ -81,6 +118,14 @@
 				dialogTpl = '<table class="m-dialog"><tr><th class="m-title" colspan="2">{title}</th></tr><tr><td colspan="2" class="m-content">{content}</td></tr><tr class="m-btns"><td class="cancel">{cancel}</td><td class="confirm">{ok}</td></tr></table>',
 				dialog = function (configs) {
 					dialog.init($.extend({},defaultConfigs,configs));
+				},
+				popup = function (configs) {
+					if (typeof configs !== 'object') {
+						configs = {
+							content: configs + ''
+						};
+					}
+					popup.init(configs);
 				};
 
 			dialog.init = function (configs) {
@@ -124,6 +169,24 @@
 				});
 				setTimeout(function() {me._wrapper.addClass('show');}, 10);
 			};
+			popup.init = function (configs) {
+				var me = this;
+				if (!this._wrapper || !$('.m-popup-wrapper').length) {
+					this._wrapper = $('<div />');
+					this._wrapper.addClass('m-popup-wrapper');
+					this._wrapper.html('<div class="m-content"></div>');
+					this._content = this._wrapper.find('.m-content');
+					this._wrapper.appendTo(document.body);
+				}
+				this._content.text(configs.content);
+				configs.time = + configs.time;
+				configs.time = isNaN(configs.time) || configs.time < 0 ? 2000 : configs.time;
+				setTimeout(function() {me._wrapper.addClass('show');}, 10);
+				clearTimeout(this.timer);
+				this.timer = setTimeout(function () {
+					me._wrapper.removeClass('show');
+				}, configs.time);
+			};
 			dialog.show = function () {
 				if (this._wrapper && $('.m-dialog-wrapper').length) {
 					this._wrapper.addClass('show');
@@ -135,6 +198,7 @@
 				}
 			};
 			$.dialog = dialog;
+			$.popup = popup;
 		})($);
 
 
@@ -148,13 +212,17 @@
 		// 	cancelCB: null, //取消按钮回调函数
 		// 	okCB: null //确定按钮回调函数
 		// }
-		$.dialog({
-			title:'通知',
-			content:'登录成功',
-			cancel: false,
-			ok: '知道了',
-			// okCB: function(){alert('you clicked yes button')}
-		});
+		// $.dialog({
+		// 	title:'通知',
+		// 	content:'登录成功',
+		// 	// cancel: false,
+		// 	ok: '知道了',
+		// 	// type: ''
+		// 	// okCB: function(){alert('you clicked yes button')}
+		// });
+		// $.popup = function (argument) {
+		// 	// body...
+		// }
 		// 创建对话框后，对话框默认显示，通过使用 $.dialog.hide(),$.dialog.show() 可以隐藏和显示对话框
 	</script>
 </body>
