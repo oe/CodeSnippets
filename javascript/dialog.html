@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>dialog</title>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<style>
+		.m-dialog-wrapper {
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background-color: rgba(33,33,33,.4);
+			visibility: hidden;
+			opacity: 0;
+			z-index: 99999;
+			-webkit-transition: opacity .22s linear;
+			transition: opacity .22s linear;
+		}
+		.m-dialog-wrapper.show {
+			opacity: 1;
+			visibility: visible;
+		}
+		.m-dialog-wrapper .m-dialog {
+			width: 80%;
+			max-width: 300px;
+			margin: 0 auto;
+			margin-top: 100px;
+			color: #333;
+			font-style: 14px;
+			background-color: #fff;
+			border-radius: 6px;
+			text-align: center;
+			border-collapse: collapse;
+			overflow: hidden;
+		}
+		.m-dialog-wrapper .m-dialog .m-title {
+			padding: 8px;
+			padding-bottom: 0;
+			font-size: 1.2em;
+			font-weight: bold;
+			white-space: nowrap;
+			overflow:hidden;
+			text-overflow:ellipsis;
+		}
+		.m-dialog-wrapper .m-dialog .m-content {
+			padding: 4px 8px;
+			padding-bottom: 8px;
+			border-bottom: 1px solid #ccc;
+		}
+		.m-dialog-wrapper .m-dialog .m-btns {
+			overflow: hidden;
+		}
+		.m-dialog-wrapper .m-dialog .m-btns td {
+			padding: 8px;
+			width: 50%;
+			font-weight: bold;
+			color: #63A3DA;
+		}
+		.m-dialog-wrapper .m-dialog .m-btns td.active,.m-dialog-wrapper .m-dialog .m-btns td:active {
+			background-color: #ddd;
+		}
+		.m-dialog-wrapper .m-dialog .m-btns .confirm.border {
+			border-left: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		(function ($) {
+			var defaultConfigs = {
+					title: '提示',
+					content: '无提示内容',
+					cancel: '取消',
+					ok: '确认',
+					cancelCB: null,
+					okCB: null
+				},
+				dialogTpl = '<table class="m-dialog"><tr><th class="m-title" colspan="2">{title}</th></tr><tr><td colspan="2" class="m-content">{content}</td></tr><tr class="m-btns"><td class="cancel">{cancel}</td><td class="confirm">{ok}</td></tr></table>',
+				dialog = function (configs) {
+					dialog.init($.extend({},defaultConfigs,configs));
+				};
+
+			dialog.init = function (configs) {
+				var me = this;
+				if (!this._wrapper || !$('.m-dialog-wrapper').length) {
+					this._wrapper = $('<div />');
+					this._wrapper.html(dialogTpl);
+					this._wrapper.addClass('m-dialog-wrapper');
+					this._title = this._wrapper.find('.m-title');
+					this._content = this._wrapper.find('.m-content');
+					this._okBtn = this._wrapper.find('.confirm');
+					this._cancelBtn = this._wrapper.find('.cancel');
+					this._wrapper.on('touchstart','.m-btns td',function () {
+						this.classList.add('active');
+					});
+					this._wrapper.on('touchend','.m-btns td',function () {
+						this.classList.remove('active');
+					});
+					this._wrapper.appendTo(document.body);
+				}
+				this._title.text(configs.title);
+				this._content.text(configs.content);
+				this._content.text(configs.content);
+				this._okBtn.text(configs.ok);
+				this._cancelBtn.off('click');
+				if (configs.cancel !== false) {
+					this._cancelBtn.text(configs.cancel).show();
+					this._okBtn.addClass('border');
+					this._cancelBtn.on('click',function (e) {
+						me._wrapper.removeClass('show');
+						configs.cancelCB && configs.cancelCB.call(null, e);
+					});
+				} else {
+					this._okBtn.removeClass('border');
+					this._cancelBtn.hide();
+				}
+				this._okBtn.off('click');
+				this._okBtn.on('click',function (e) {
+					me._wrapper.removeClass('show');
+					configs.okCB && configs.okCB.call(null, e);
+				});
+				setTimeout(function() {me._wrapper.addClass('show');}, 10);
+			};
+			dialog.show = function () {
+				if (this._wrapper && $('.m-dialog-wrapper').length) {
+					this._wrapper.addClass('show');
+				}
+			};
+			dialog.hide = function () {
+				if (this._wrapper && $('.m-dialog-wrapper').length) {
+					this._wrapper.removeClass('show');
+				}
+			};
+			$.dialog = dialog;
+		})($);
+
+
+
+		// 使用示例，给dialog传入一个对象参数即可，默认参数如下
+		// {
+		// 	title: '提示', //提示标题
+		// 	content: '无提示内容', //提示内容
+		// 	cancel: '取消', //取消按钮文字，值为false是不显示取消按钮
+		// 	ok: '确认', //确认按钮文字
+		// 	cancelCB: null, //取消按钮回调函数
+		// 	okCB: null //确定按钮回调函数
+		// }
+		$.dialog({
+			title:'通知',
+			content:'登录成功',
+			cancel: false,
+			ok: '知道了',
+			// okCB: function(){alert('you clicked yes button')}
+		});
+		// 创建对话框后，对话框默认显示，通过使用 $.dialog.hide(),$.dialog.show() 可以隐藏和显示对话框
+	</script>
+</body>
+</html>

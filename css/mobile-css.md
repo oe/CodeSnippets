@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 ```
 
+### 禁止数字自动变为拨号链接
+在html的head中加入以下代码即可
+```html
+<meta name="format-detection" content="telephone=no">
+```
+
 ### 图片自适应
 将以下class应用于img标签上即可
 ```css
@@ -16,13 +22,28 @@
 }
 ```
 
-### Safari下input宽度问题
+### iOS Safari浏览器样式问题
+* input 宽度问题  
 这个问题还是盒式模型的问题，添加以下css即可
 ```css
 input[type="text"]{
    -moz-box-sizing:    border-box;
    -webkit-box-sizing: border-box;
     box-sizing:        border-box;
+}
+```
+* button样式问题  
+button样式很难自定义，使用以下css代码即可禁用浏览器默认样式
+```css
+/*禁止webkit浏览器的默认样式*/
+-webkit-appearance:none
+```
+```css
+.btn {
+	-webkit-appearance: button;
+	-moz-box-sizing:    border-box;
+	-webkit-box-sizing: border-box;
+	 box-sizing:        border-box;
 }
 ```
 
@@ -55,3 +76,6 @@ NETWORK:
     *
 ```
 最后两行不能丢，否则未缓存的文件可能无法正常请求。
+
+### iOS Safari浏览器样式问题
+iOS Safari
