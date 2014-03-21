@@ -2,7 +2,7 @@
 	css tricks
  */
 
-/*----------- 1. clear float -------------*/
+/*----------- 1. clear float -------------清除浮动*/
 /* 1) use overflow in element has float children */
 .wrapper {
 	/*overflow: auto;*/
@@ -19,7 +19,7 @@
 }
 
 
-/*----------- 2. vertical-align: middle -------------*/
+/*----------- 2. vertical-align: middle ------------- 垂直居中*/
 /* 1) absolute postion*/
 /* html like this
 <div class="parent">
@@ -66,7 +66,7 @@
     padding: 10% 0;
 }
 
-/* 3. footer stick at page bottom */
+/* -------------------3. footer stick at page bottom ----------------------footer固定底部*/
 /*
 here is html, this works well in most browser including IE
 <!doctype html>
@@ -98,8 +98,11 @@ body {
 	bottom: 0;
 }
 
-/* 4. animate between display block & none*/
-/* 1) use opacity height & overflow */
+/* --------------------4. animate between display block & none--------------动画显示隐藏*/
+/* 1) use opacity height & overflow: this is ugly,
+    animation on show but not hide because of height auto
+    with no animation.
+*/
 div {
     display: block;
     -webkit-transition: opacity 1s ease-out;
@@ -112,4 +115,46 @@ div {
 div.active {
     opacity: 1;
     height: auto;
+}
+/* 2) use opacity & max-height: this is better*/
+div {
+    display: block;
+    -webkit-transition: opacity 1s ease-out;
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+div.active {
+    opacity: 1;
+    max-height: 400px; /* PERCENT LIKE 100% WON'T WORK!
+    CAN USE A MAX-HEIGHT BIGGER THAN ITS SIZE */
+}
+
+
+/* ---------------------5. horizontal scroll------------------------ 水平滚动 */
+/* 1) white-space:nowrap; display: inline-block;  overflow-x: auto;*/
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 4px;
+    text-align: center;
+    font-size: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -ms-overflow-y: hidden; /* for IE8*/
+    white-space:nowrap;
+}
+ul li {
+    padding-left: 6px;
+    padding-right: 6px;
+    display: inline-block;
+    cursor: pointer;
+}
+/* 2) just overflow if inner is widther than outer */
+.hscroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -ms-overflow-y: hidden; /* for IE8*/
 }
