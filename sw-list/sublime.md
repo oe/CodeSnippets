@@ -13,3 +13,11 @@
 * EditorConfig				`编辑配置文件`
 * DocBlockr					`依据函数生成帮助文档`
 * HTML-JS-CSS Pretty		`代码美化`
+
+### sublime 设置
+在Preferences→Settings User中插入一下内容
+```
+"tab_size": 2,
+"translate_tabs_to_spaces": true
+```
+将Tab缩进改为两个空格, 保持代码格式一致

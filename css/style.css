@@ -1,21 +1,21 @@
 /*
-	css tricks
+    css tricks
  */
 
 /*----------- 1. clear float -------------清除浮动*/
 /* 1) use overflow in element has float children */
 .wrapper {
-	/*overflow: auto;*/
-	overflow: hidden;
+    /*overflow: auto;*/
+    overflow: hidden;
 }
 /* 2) use overflow */
 .wrapper:before, .wrapper:after {
-	content: ' ';
-	display: table;
+    content: ' ';
+    display: table;
 }
 /* 3) clear float in element after a float element */
 .clearfix {
-	clear: both;
+    clear: both;
 }
 
 
@@ -28,7 +28,7 @@
  And the following is css
 */
 .parent {
-	position: relative;
+    position: relative;
 }
 
 .child {
@@ -49,7 +49,7 @@
  And the following is css
 */
 .parent {
-	display: table;
+    display: table;
 }
 
 .child {
@@ -78,24 +78,24 @@ here is html, this works well in most browser including IE
 </html>
  */
 html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 body {
-	min-height: 100%;
-	/*position is very important*/
-	position: relative;
+    min-height: 100%;
+    /*position is very important*/
+    position: relative;
 }
 .footer-fixed {
-	height: 200px;
+    height: 200px;
 }
 .footer {
-	height: 200px;
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
+    height: 200px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 /* --------------------4. animate between display block & none--------------动画显示隐藏*/
@@ -157,4 +157,12 @@ ul li {
     overflow-x: auto;
     overflow-y: hidden;
     -ms-overflow-y: hidden; /* for IE8*/
+}
+
+/*------------------ text-overflow: ellipsis; ----------------- 文字溢出时显示省略号*/
+/* 得保证该元素有自己的宽度(不能为内联元素, PS: 有float属性的也可以获得宽度)*/
+.ellips {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }

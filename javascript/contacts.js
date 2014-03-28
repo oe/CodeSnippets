@@ -40,7 +40,6 @@ Ext.application({
                 html: 'Favors',
                 items: [
                 {
-                    
                 }
                 ],
             }

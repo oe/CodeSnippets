@@ -1,31 +1,31 @@
 /*
 keyCode
 Windows:
-	Escape 27; Tab 9; CapsLock 20; Shift 16; Ctrl 17;
-	Alt 18; Win 91;Enter 13; Backspace 8; Delete 46;
+  Escape 27; Tab 9; CapsLock 20; Shift 16; Ctrl 17;
+  Alt 18; Win 91;Enter 13; Backspace 8; Delete 46;
 Mac:Escape 27; Tab 9; CapsLock 20; Shift 16; Ctrl 17;
-	Alt 18; CMD 91;Enter 13; No Backspace; Delete 8;
+  Alt 18; CMD 91;Enter 13; No Backspace; Delete 8;
 
 */
 
 
 /*Make a function step by step
- *	function add(a,b){return a + b};
- *	//add5 is a function like add but with an argument 5
- *	var add5 = curry(add,5);
- *	add5(2); //get 7
- *	add(4); //get 9
+ *  function add(a,b){return a + b};
+ *  //add5 is a function like add but with an argument 5
+ *  var add5 = curry(add,5);
+ *  add5(2); //get 7
+ *  add(4); //get 9
  *just make an function partialApply
  **/
 
 function curry (fn) {
-	var slice = Array.prototype.slice,
-		storeArgs = slice.call(arguments, 1);
-	return function  () {
-		var newArgs = slice.call(arguments),
-			args = storeArgs.concat(newArgs);
-		return fn.apply(null,args);
-	}
+  var slice = Array.prototype.slice,
+    storeArgs = slice.call(arguments, 1);
+  return function  () {
+    var newArgs = slice.call(arguments),
+      args = storeArgs.concat(newArgs);
+    return fn.apply(null,args);
+  }
 }
 
 
@@ -35,22 +35,22 @@ function curry (fn) {
  this code shows how to inherit better
 */
 function Parent () {
-	// body...
+  // body...
 }
 function Child () {
-	Parent.apply(this,arguments);
+  Parent.apply(this,arguments);
 }
 function inherit (Child, Parent) {
-	// create a temp function
-	var F = function(){};
-	F.prototype = Parent.prototype;
-	//inherit prototype from temp function
-	//seperate Child & Parent proto relation
-	Child.prototype = new F();
-	// Save prototype of parent
-	Child.uber = Parent.prototype;
-	// reset constructor of Child
-	Child.prototype.constructor = Child;
+  // create a temp function
+  var F = function(){};
+  F.prototype = Parent.prototype;
+  //inherit prototype from temp function
+  //seperate Child & Parent proto relation
+  Child.prototype = new F();
+  // Save prototype of parent
+  Child.uber = Parent.prototype;
+  // reset constructor of Child
+  Child.prototype.constructor = Child;
 }
 
 
@@ -61,23 +61,23 @@ function inherit (Child, Parent) {
 
 // copy property from parent to child
 function extendDeep (parent, child) {
-	var i,
-		toStr = Object.prototype.toString,
-		astr = '[object Array]';
-	child = child || {};
-	if (parent) {
-		for (i in parent) {
-			if (parent.hasOwnProperty(i)) {
-				if (parent[i] && typeof p[i] === 'object') {
-					child[i] = toStr.call(parent[i]) === astr ? [] : {};
-					extendDeep(parent[i],child[i]);
-				} else {
-					child[i] = parent[i];
-				}
-			}
-		}
-	}
-	return child;
+  var i,
+    toStr = Object.prototype.toString,
+    astr = '[object Array]';
+  child = child || {};
+  if (parent) {
+    for (i in parent) {
+      if (parent.hasOwnProperty(i)) {
+        if (parent[i] && typeof p[i] === 'object') {
+          child[i] = toStr.call(parent[i]) === astr ? [] : {};
+          extendDeep(parent[i],child[i]);
+        } else {
+          child[i] = parent[i];
+        }
+      }
+    }
+  }
+  return child;
 }
 //HTML encode & decode
 function htmlEncode( html ) {
@@ -114,10 +114,10 @@ function passThrough(e) {
 $("#shield").click(passThrough);
 
 var dthen = new Date();
-		
+    
 setInterval(function(){
-	dNow = new Date();
-	$('#shield').css('height', ((dNow.getSeconds()+(dNow.getMilliseconds()/1000))*50)%300 +'px');
+  dNow = new Date();
+  $('#shield').css('height', ((dNow.getSeconds()+(dNow.getMilliseconds()/1000))*50)%300 +'px');
 },10)
 
 var doPassThrough = true;
