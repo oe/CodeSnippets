@@ -159,10 +159,43 @@ ul li {
     -ms-overflow-y: hidden; /* for IE8*/
 }
 
-/*------------------ text-overflow: ellipsis; ----------------- 文字溢出时显示省略号*/
+/*------------------6. text-overflow: ellipsis; ----------------- 文字溢出时显示省略号*/
 /* 得保证该元素有自己的宽度(不能为内联元素, PS: 有float属性的也可以获得宽度)*/
 .ellips {
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
 }
+/*------------------7. iframe Responsive height -------------------- iframe 自适应高度*/
+/* 一下是html结果
+<div class="content">
+    <div class="embed-container">
+        <iframe src="http://www.youtube.com/embed/v2938XRpRjM" frameborder="0"></iframe>
+    </div>
+</div>
+
+参考链接 http://yetti.co.uk/blog/articles/responsive-iframe-objects-and-embeds.html
+better resize method
+http://yetti.co.uk/blog/articles/better-responsive-iframes.html
+一下是css
+*/
+.content {
+    width: 50%;
+    margin: 0px auto;
+}
+.embed-container {
+    height: 0; /* 高度可调, 如果改元素距离顶部有距离, 高度则应为该值 */
+    width: 100%;
+    padding-bottom: 56.25%; /*该值为正常屏幕的高宽比 9 / 16*/
+    overflow: hidden;
+    position: relative;
+}
+            
+.embed-container iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
