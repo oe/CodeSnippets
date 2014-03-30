@@ -1,3 +1,9 @@
+#fix github cdn problem because of GFW
+185.31.17.184  github.global.ssl.fastly.net
+#fix stackoverflow cdn
+198.252.206.140 cdn.sstatic.net
+198.252.206.140 sstatic.net
+
 #ad host
 # baidu ad
 
