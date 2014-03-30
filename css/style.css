@@ -199,3 +199,10 @@ http://yetti.co.uk/blog/articles/better-responsive-iframes.html
     left: 0;
 }
 
+/*-----------------8. display inline-block increase parent height------------------- 包含有内联块状元素容器高度可能莫名增大的问题*/
+/*
+该问题主要由于line-height属性导致的, 容器有line-height, 所以会看到父元素高度和内联块元素间有留白, 设置 line-height: 0; 即可
+*/
+.container {
+    line-height: 0;
+}
