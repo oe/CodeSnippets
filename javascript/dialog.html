@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>dialog</title>
-  <!-- <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> -->
-  <script src="zepto.min.js"></script>
+  <script src="http://cdn.staticfile.org/zepto/1.1.3/zepto.min.js"></script>
   <style>
-    .m-dialog-wrapper {
+    .m-dialog-wrapper, .m-loading-wrapper {
       position: fixed;
       top: 0;
       left: 0;
@@ -20,7 +19,7 @@
       -webkit-transition: opacity .22s linear;
       transition: opacity .22s linear;
     }
-    .m-dialog-wrapper.show {
+    .m-dialog-wrapper.show, .m-loading-wrapper.show {
       opacity: 1;
       visibility: visible;
     }
@@ -99,13 +98,37 @@
     .m-dialog-wrapper .m-dialog .m-btns .confirm.border {
       border-left: 1px solid #ccc;
     }
+    .m-loading-wrapper .m-content {
+      position: absolute;
+      top: 50%;
+      height: 0;
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .m-loading-wrapper .m-content .m-inner {
+      padding: 8px;
+      border-radius: 8px;
+      background-color: #f7f7f7;
+      position: relative;
+      top: -40px;
+      display: inline-block;
+      min-width: 40px;
+    }
+    .m-loading-wrapper .m-content .m-text {
+      padding-top: 32px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #888;
+      background: url(img-loading.gif) no-repeat top center;
+    }
   </style>
 </head>
 <body>
-<!-- <div class="m-popup-wrapper show">
-  <div class="m-content">heelo</div>
-</div> -->
-  <script>
+<script>
     (function ($) {
       var defaultConfigs = {
           title: '提示',
@@ -126,8 +149,10 @@
             };
           }
           popup.init(configs);
+        },
+        loading = function (text) {
+          loading.init(text);
         };
-
       dialog.init = function (configs) {
         var me = this;
         if (!this._wrapper || !$('.m-dialog-wrapper').length) {
@@ -187,6 +212,18 @@
           me._wrapper.removeClass('show');
         }, configs.time);
       };
+      loading.init = function (text) {
+        var me = this;
+        if (!this._wrapper || !$('.m-loading-wrapper').length) {
+          this._wrapper = $('<div />');
+          this._wrapper.addClass('m-loading-wrapper');
+          this._wrapper.html(' <div class="m-content"><div class="m-inner"><div class="m-text"></div></div></div>');
+          this._text = this._wrapper.find('.m-text');
+          this._wrapper.appendTo(document.body);
+        }
+        this._text.text( text || '');
+        setTimeout(function() {me._wrapper.addClass('show');}, 10);
+      };
       dialog.show = function () {
         if (this._wrapper && $('.m-dialog-wrapper').length) {
           this._wrapper.addClass('show');
@@ -197,33 +234,20 @@
           this._wrapper.removeClass('show');
         }
       };
+      loading.show = function () {
+        if (this._wrapper && $('.m-loading-wrapper').length) {
+          this._wrapper.addClass('show');
+        }
+      };
+      loading.hide = function () {
+        if (this._wrapper && $('.m-loading-wrapper').length) {
+          this._wrapper.removeClass('show');
+        }
+      };
       $.dialog = dialog;
       $.popup = popup;
+      $.loading = loading;
     })($);
-
-
-
-    // 使用示例，给dialog传入一个对象参数即可，默认参数如下
-    // {
-    //  title: '提示', //提示标题
-    //  content: '无提示内容', //提示内容
-    //  cancel: '取消', //取消按钮文字，值为false是不显示取消按钮
-    //  ok: '确认', //确认按钮文字
-    //  cancelCB: null, //取消按钮回调函数
-    //  okCB: null //确定按钮回调函数
-    // }
-    // $.dialog({
-    //  title:'通知',
-    //  content:'登录成功',
-    //  // cancel: false,
-    //  ok: '知道了',
-    //  // type: ''
-    //  // okCB: function(){alert('you clicked yes button')}
-    // });
-    // $.popup = function (argument) {
-    //  // body...
-    // }
-    // 创建对话框后，对话框默认显示，通过使用 $.dialog.hide(),$.dialog.show() 可以隐藏和显示对话框
   </script>
 </body>
 </html>

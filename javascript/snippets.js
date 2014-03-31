@@ -61,3 +61,14 @@ function serialize (data) {
   }
   return res.join('&');
 }
+
+/*-------------------------判断对象是否为空----------------------------------*/
+function isEmptyObj (obj) {
+  var key;
+  for (key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      return false;
+    }
+  }
+  return true;
+}
