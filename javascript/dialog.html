@@ -166,7 +166,7 @@
           this._wrapper.on('touchstart','.m-btns td',function () {
             this.classList.add('active');
           });
-          this._wrapper.on('touchend','.m-btns td',function () {
+          this._wrapper.on('touchend touchmove','.m-btns td',function () {
             this.classList.remove('active');
           });
           this._wrapper.appendTo(document.body);

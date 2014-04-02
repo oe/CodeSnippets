@@ -14,8 +14,7 @@ function changeFileName(filepath){
 			//console.log(thisFilename);
 			//这个if就是进行更改文件名的逻辑,可以自行定义,这里定义为将文件命名为当前文件夹的名字加"-文件自身名"
 			if( filename != scriptName ){
-				// newName = filename.replace('幻灯片','');
-				newName = filename.toLowerCase();
+				newName = filename.replace('幻灯片','').toLowerCase();
 				newPath = parentDir + path.sep + newName;
 				console.log("going to rename from "+filepath+" to "+newPath);
 				fs.rename(filepath,newPath);
@@ -32,11 +31,10 @@ function changeFileName(filepath){
 
 function renameFilesInDir(dir){
 	fs.readdir(dir,function(error,files){
-		var len = files.length;
-		var file = null;
-		for(var i=0;i<len;i++){
-			file = files[i];
+		files.sort(function(a, b) {
+			return a < b ? -1 : 1;
+		}).forEach(function(file, key) {
 			changeFileName(dir+"\\"+file);
-		}
+		});
 	});
 }

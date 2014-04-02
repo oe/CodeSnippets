@@ -5,7 +5,8 @@
 $(document.body).on('touchstart','.btn',function () {
   this.classList.add('active');
 });
-$(document.body).on('touchend','.btn',function () {
+// touchmove事件也需要监听, 否则按住元素拖动时, 激活样式不会移除
+$(document.body).on('touchend touchmove','.btn',function () {
   this.classList.remove('active');
 });
 
