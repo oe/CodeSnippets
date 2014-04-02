@@ -15,10 +15,10 @@
 将以下class应用于img标签上即可
 ```css
 .image {
-	display: block;
-	margin: 0 auto;
-	max-width: 100%;
-	height: auto; /*高度会根据屏幕尺寸变化， 也可以赋予固定高度*/
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto; /*高度会根据屏幕尺寸变化， 也可以赋予固定高度*/
 }
 ```
 
@@ -40,10 +40,10 @@ button样式很难自定义，使用以下css代码即可禁用浏览器默认�
 ```
 ```css
 .btn {
-	-webkit-appearance: button;
-	-moz-box-sizing:    border-box;
-	-webkit-box-sizing: border-box;
-	 box-sizing:        border-box;
+  -webkit-appearance: button;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+   box-sizing:        border-box;
 }
 ```
 
@@ -51,10 +51,10 @@ button样式很难自定义，使用以下css代码即可禁用浏览器默认�
 给body内的容器设置`overflow`属性则可以生效，可以使用如下代码
 ```css
 body {
-	margin: 0;
+  margin: 0;
 }
 #container {
-	overflow-x: hidden; /*禁止container横向滚动*/
+  overflow-x: hidden; /*禁止container横向滚动*/
 }
 ```
 
@@ -67,11 +67,11 @@ body {
 CACHE MANIFEST
 # v33 (使用更改注释的方法来更新cache)
 CACHE:
-	css/main.css
-	css/carousel.css
-	js/carousel.js
-	js/album.js
-	http://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.3/zepto.min.js
+  css/main.css
+  css/carousel.css
+  js/carousel.js
+  js/album.js
+  http://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.3/zepto.min.js
 NETWORK:
     *
 ```
@@ -79,3 +79,12 @@ NETWORK:
 
 ### iOS Safari浏览器样式问题
 iOS Safari
+
+
+### 禁用移动设备上按钮或者链接点击的高亮效果
+使用以下css即可
+```css
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+```
