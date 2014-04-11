@@ -3,13 +3,13 @@
  * 自动抓取中关村壁纸上的壁纸地址(会存入 imglist.txt 中)
  * 修改 @resolution 以设置壁纸分辨率
  * 在start函数中传入壁纸分类的链接及页数(默认1页)
- *
+ * set node path on mac: export NODE_PATH="/usr/local/lib/node_modules/"
  */
 
 var http = require('http'),
-  cheerio = require('/usr/local/lib/node_modules/cheerio'),
+  cheerio = require('cheerio'),
   fs = require('fs'),
-  iconv = require('/usr/local/lib/node_modules/iconv-lite'),
+  iconv = require('iconv-lite'),
   querystring = require('querystring'),
   baseUrl = 'http://desk.zol.com.cn',
   // 目标壁纸分辨率
@@ -28,8 +28,8 @@ function getFromUrl(url, callback){
       res.on('data', function(data){
         html += data;
       }).on('end', function(){
-        var buf = new Buffer(html, 'binary');
-            var str = iconv.decode(buf, 'gb2312');//将GBK编码的字符转换成utf8的
+        var buf = new Buffer(html, 'binary'),
+          str = iconv.decode(buf, 'gb2312');//将GBK编码的字符转换成utf8的
         callback(str);
       }).on('close', function(){
         console.log('Close received!');

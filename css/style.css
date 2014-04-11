@@ -206,3 +206,8 @@ http://yetti.co.uk/blog/articles/better-responsive-iframes.html
 .container {
     line-height: 0;
 }
+
+/*-----------------9. line-height with input on firefox not working----------------------*/
+/*
+ 火狐的本身的bug, 无法设置input的line-height, 需要手动设置input的height才行
+*/
