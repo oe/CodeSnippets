@@ -7,18 +7,18 @@
  */
 
 var http = require('http'),
-  cheerio = require("cheerio"),
+  cheerio = require('/usr/local/lib/node_modules/cheerio'),
   fs = require('fs'),
-  iconv = require('iconv-lite'),
+  iconv = require('/usr/local/lib/node_modules/iconv-lite'),
   querystring = require('querystring'),
   baseUrl = 'http://desk.zol.com.cn',
   // 目标壁纸分辨率
-  resolution = '1366x768',
+  resolution = '1920x1080',
   buffSize = 20,
   // 缓存要写入的url
   imgUrlBuff = [];
 
-start('http://desk.zol.com.cn/meinv/',3);
+start('http://desk.zol.com.cn/meinv/xingganmeinv/',3);
 
 // get fromurl
 function getFromUrl(url, callback){
@@ -41,13 +41,44 @@ function getFromUrl(url, callback){
   });
 }
 
-function start (url,pageCount) {
-  var i = 1;
-  pageCount = isNaN(pageCount) || pageCount < 1 ? 1 : + pageCount;
-  while (pageCount--) {
-    getAlbumInPage(url + (i++) + '.html');
+// 1. ommit topage will get 1 to fromPage's wallpaper
+// 2. toPage < fromPage or not a number, use 1 to fromPage
+// 3. default is 1 to 1
+function start (url,fromPage, toPage) {
+  var i;
+  if (toPage === undefined) {
+    if (isNaN(fromPage) || fromPage < 1) {
+      fromPage = toPage = 1;
+    } else {
+      toPage = + fromPage;
+      fromPage = 1; 
+    }
+  } else {
+    if (isNaN(toPage) || toPage < 1 || toPage < fromPage ) {
+      if (isNaN(fromPage) || fromPage < 1) {
+        fromPage = toPage = 1;
+      } else {
+        toPage = + fromPage;
+        fromPage = 1; 
+      }
+    } else {
+      if (isNaN(fromPage) || fromPage < 1) {
+        fromPage = 1;
+        toPage = + toPage;
+      } else {
+        fromPage = + fromPage;
+        toPage = + toPage;
+      }
+    }
+  }
+  console.log( fromPage, toPage );
+  i = fromPage - 1;
+  while (i != toPage) {
+    getAlbumInPage(url + (++i) + '.html');
   }
 }
+
+// exports.start = start;
 
 
 function _getAlbumInPage (html) {
