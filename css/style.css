@@ -65,6 +65,18 @@
 .child {
     padding: 10% 0;
 }
+/* 4) use translate */
+.center-vertical {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* horizontal in the same way */
+.center-horizontal {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); 
+}
 
 /* -------------------3. footer stick at page bottom ----------------------footer固定底部*/
 /*
@@ -190,7 +202,7 @@ http://yetti.co.uk/blog/articles/better-responsive-iframes.html
     overflow: hidden;
     position: relative;
 }
-            
+
 .embed-container iframe {
     width: 100%;
     height: 100%;
@@ -211,3 +223,41 @@ http://yetti.co.uk/blog/articles/better-responsive-iframes.html
 /*
  火狐的本身的bug, 无法设置input的line-height, 需要手动设置input的height才行
 */
+
+/* ---------------fixed ratio of width & height---------------- */
+/*
+<div class="container">
+    <div class="content">
+        this content will have a constant aspect ratio that varies based on the width.
+    </div>
+</div>
+*/
+.container {
+    position: relative;
+    width: 100%;
+    /* fix width / height is 5 / 1*/
+    padding-bottom: 20%;
+}
+.content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+/* text justify for chinese */
+/*
+there must be a space between each word
+<div class="justify">姓 名</div>
+ */
+.justify {
+    text-align: justify;
+    text-align-last: justify;
+}
+.justify:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+}
