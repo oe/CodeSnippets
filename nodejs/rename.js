@@ -64,12 +64,13 @@ function renameRemove (filePath, str, lowCase) {
 // rename file name to progressive number
 function rename2ProgressiveNum (filePath, lowCase) {
   var extName = path.extname(filePath),
+      fileName = path.basename(filePath),
       dirName = path.dirname(filePath),
       newPath; 
   if (fileName !== scriptName && !fileName.match(/^\./)) {
     newPath = (rename2ProgressiveNum.NumIndex ++ ) + '' + extName;
     if (lowCase) {
-      newPath = newPath.toLowerCase;
+      newPath = newPath.toLowerCase();
     }
     newPath = dirName + path.sep + newPath;
     console.log('rename from ' + filePath + ' to ' + newPath);
@@ -103,8 +104,6 @@ function main () {
         console.log('string that to be removed is required');
         help();
       }
-    } else if (type.match(/l/i)) {
-      traveldir(dir,rename2LowerCase);
     } else if(type.match(/i/i)){
       if (param !== undefined && isNaN(+param)) {
         help();
@@ -121,6 +120,8 @@ function main () {
           rename2ProgressiveNum(filePath, param, lowCase);
         });
       }
+    } else if (type.match(/l/i)) {
+      traveldir(dir,rename2LowerCase);
     } else {
       help();
     }

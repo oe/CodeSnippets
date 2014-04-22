@@ -224,7 +224,7 @@ http://yetti.co.uk/blog/articles/better-responsive-iframes.html
  火狐的本身的bug, 无法设置input的line-height, 需要手动设置input的height才行
 */
 
-/* ---------------fixed ratio of width & height---------------- */
+/* ---------------10. fixed ratio of width & height---------------- */
 /*
 <div class="container">
     <div class="content">
@@ -245,7 +245,7 @@ http://yetti.co.uk/blog/articles/better-responsive-iframes.html
     bottom: 0;
     left: 0;
 }
-/* text justify for chinese */
+/*----------------11. text justify for chinese --------------------*/
 /*
 there must be a space between each word
 <div class="justify">姓 名</div>
@@ -261,3 +261,12 @@ there must be a space between each word
     height: 0;
     overflow: hidden;
 }
+/*-----------------12. Prevent background-color bleed on touch screens
+ 阻止移动设备上, 缩放时有背景颜色的元素出现黑色边框---*/
+/* referred  http://bricss.net/post/23292393396/prevent-background-color-bleed-on-touch-screens 
+Just a 1 pixel outline in the same color as your page background, et voila!
+*/
+div {
+    outline: 1px solid #fff;
+}
+

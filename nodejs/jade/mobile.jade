@@ -1,0 +1,16 @@
+//- run jade in commandline: jade -P test.jade -O test.json
+//-   this will compile jade file to html with the json file.
+//-   option -P for pretty print, -O for configuration(json file)
+//- commandline: jade -cD test.jade
+//-   get template js file
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title=pageTitle
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    meta(name="format-detection" content="telephone=no")
+    //- external css, js
+    block head
+  body
+    block body
