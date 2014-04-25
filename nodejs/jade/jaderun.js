@@ -12,14 +12,18 @@ main();
 
 function travelJadesInDir (dir,callback) {
   fs.readdir(dir, function (err,files) {
+    var count = 0;
     if (err) {
       console.log('read file error: ' + err.message);
     } else {
       files.filter(function(i) {
-        return i.search(/\.jade$/) > 0 ;
+        // just deal with jade file and file name not start with _
+        return i.search(/\.jade$/) > 0 && i.split(path.sep).pop().search(/^_/) === -1;
       }).forEach(function (file,key) {
         var filePath = path.join(dir,file),
           stat = fs.statSync(filePath);
+        ++count;
+        
         if (stat.isFile()) {
           callback(filePath);
         } else if(stat.isDirectory()) {
@@ -29,6 +33,12 @@ function travelJadesInDir (dir,callback) {
           console.log('unknow file type:' + filePath);
         }
       });
+
+      if (!count) {
+        console.log('No Jade file need to be proccess.\n');
+      } else {
+        console.log(count + ' Jade files has been processed.\n');
+      }
     }
   });
 }
@@ -44,7 +54,7 @@ function writeFile (fname, content) {
       console.log(err.message);
       return;
     }
-    console.log('----- Yes! Html file *' + fname + '* is generated!');
+    console.log('----- *' + fname + '*');
   });
 }
 

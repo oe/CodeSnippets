@@ -1,5 +1,5 @@
 @echo off
-
+title Jade2Html Runner
 if exist "%~dp0\jaderun.js" (
 
   node "%~dp0\jaderun.js" %*
