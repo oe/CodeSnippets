@@ -72,3 +72,10 @@ function isEmptyObj (obj) {
   }
   return true;
 }
+
+/* ----------- 关闭窗口--------------------- */
+function close_window () {
+  window.opener = null;
+  window.open('','_self','');
+  window.close();
+}
