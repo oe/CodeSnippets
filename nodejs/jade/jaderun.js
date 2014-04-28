@@ -89,7 +89,7 @@ function renderJade (file) {
     if (fs.existsSync(configs)) {
       configs = require(configs);
       jadeStr = fs.readFileSync(file);
-      compileFn = jade.compile(jadeStr, {pretty: true});
+      compileFn = jade.compile(jadeStr, {filename:'relative',pretty: true});
       if (configs._multi) {
         configs.data.forEach(function (config) {
           var fname = config._fname ||
@@ -102,7 +102,7 @@ function renderJade (file) {
         writeFile(fname, compileFn(config));
       }
     } else {
-      writeFile(path.basename(file,'.jade'), jade.renderFile(file, {pretty: true}));
+      writeFile(path.basename(file,'.jade'), jade.renderFile(file, {filename:'relative',pretty: true}));
     }
   } catch (e) {
     console.log('error with file: ' + file + ' , message is: ' + e.message);
