@@ -5,19 +5,19 @@
 var fs = require('fs'),
   path = require("path"),
   jade = require('jade'),
-  // html 输出路径
+  // html output path
   optPath = '';
 
 main();
-
-function travelJadesInDir (dir,callback) {
+// travel jade in folder
+function travelJadeInDir (dir,callback) {
   fs.readdir(dir, function (err,files) {
     var count = 0;
     if (err) {
       console.log('read file error: ' + err.message);
     } else {
       files.filter(function(i) {
-        // just deal with jade file and file name not start with _
+        // just deal with jade file and ignore file name start with _
         return i.search(/\.jade$/) > 0 && i.split(path.sep).pop().search(/^_/) === -1;
       }).forEach(function (file,key) {
         var filePath = path.join(dir,file),
@@ -42,7 +42,7 @@ function travelJadesInDir (dir,callback) {
     }
   });
 }
-
+// write html content to file
 function writeFile (fname, content) {
   fname = (fname + '').replace(/\.$/,'');
   if (fname.search(/\.html$/) === -1) {
@@ -51,7 +51,7 @@ function writeFile (fname, content) {
   fname = path.join(optPath, fname);
   fs.writeFile( fname, content, 'utf8', function(err){
     if(err) {
-      console.log(err.message);
+      console.log('error when output html file: ' + err.message);
       return;
     }
     console.log('----- *' + fname + '*');
@@ -80,7 +80,7 @@ json file format
   "_fname": "uio.html",
   ....
 }*/
-
+// render jade file with json file
 function renderJade (file) {
   var jadeStr, compileFn, html, fname,
     index = 1,
@@ -99,7 +99,7 @@ function renderJade (file) {
         });
       } else {
         fname = configs._fname || path.basename(file,'.jade');
-        writeFile(fname, compileFn(config));
+        writeFile(fname, compileFn(configs));
       }
     } else {
       writeFile(path.basename(file,'.jade'), jade.renderFile(file, {filename:'relative',pretty: true}));
@@ -133,7 +133,7 @@ function main () {
   console.log('Jade Path:   ' + dir);
   console.log('Output Path: ' + optPath);
    console.log('');
-  travelJadesInDir(dir, renderJade);
+  travelJadeInDir(dir, renderJade);
 }
 
 function help () {
