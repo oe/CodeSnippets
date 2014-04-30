@@ -1,6 +1,7 @@
 
 // on windows NODE_PATH should be added to system environment
 // the value maybe C:\Users\Lidequan\AppData\Roaming\npm\node_modules 
+// a useful package to convert html to jade: html2jade
 
 var fs = require('fs'),
   path = require("path"),
