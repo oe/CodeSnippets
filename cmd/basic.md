@@ -17,3 +17,6 @@
 复制文件夹
      xcopy abc bcd /i
 复制文件夹abc到文件夹bcd, /i 用于忽略是文件还是目录, 如果abc为文件, 则bcd则为文件; 如果abc为目录, 则bcd为目录
+
+打开网页
+     start http://www.baidu.com
