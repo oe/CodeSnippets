@@ -79,3 +79,23 @@ function close_window () {
   window.open('','_self','');
   window.close();
 }
+
+/* ----------- 将类数组对象转换为数组 --------------------- */
+
+function makeArray (obj) {
+  var res,len,i;
+  try {
+    res = Array.prototype.slice.call(obj);
+  } catch(e) {
+    // for ie
+    res = [];
+    len = obj.length || 0;
+    for (i = 0; i < len; ++i) {
+      res.push( obj[i] );
+    }
+  }
+  return res;
+}
+
+
+
