@@ -1,0 +1,31 @@
+{
+	"installed_packages":
+	[
+		"Alignment",
+		"AutoFileName",
+		"AVR-ASM-Sublime",
+		"BracketHighlighter",
+		"DocBlockr",
+		"EditorConfig",
+		"Emmet",
+		"FreeMarker",
+		"HTML-CSS-JS Prettify",
+		"Jade",
+		"Jade Build",
+		"JS Snippets",
+		"LESS",
+		"Nodejs",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeLinter-coffeelint",
+		"SublimeLinter-csslint",
+		"SublimeLinter-html-tidy",
+		"SublimeLinter-jshint",
+		"SublimeLinter-php",
+		"SublimeLinter-pylint",
+		"Theme - Soda",
+		"Trimmer",
+		"URLEncode"
+	]
+}
