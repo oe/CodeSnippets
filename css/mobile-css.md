@@ -77,8 +77,6 @@ NETWORK:
 ```
 最后两行不能丢，否则未缓存的文件可能无法正常请求。
 
-### iOS Safari浏览器样式问题
-iOS Safari
 
 
 ### 禁用移动设备上按钮或者链接点击的高亮效果
@@ -88,3 +86,6 @@ iOS Safari
   -webkit-tap-highlight-color: transparent;
 }
 ```
+
+## Android browser bug
+1. 低版本Android的dom.classList.remove只接受一个参数, 多个参数会被忽略
