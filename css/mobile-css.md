@@ -23,7 +23,7 @@
 ```
 
 ### iOS Safari浏览器样式问题
-* input 宽度问题  
+* input 宽度问题
 这个问题还是盒式模型的问题，添加以下css即可
 ```css
 input[type="text"]{
@@ -32,7 +32,7 @@ input[type="text"]{
     box-sizing:        border-box;
 }
 ```
-* button样式问题  
+* button样式问题
 button样式很难自定义，使用以下css代码即可禁用浏览器默认样式
 ```css
 /*禁止webkit浏览器的默认样式*/
@@ -86,6 +86,52 @@ NETWORK:
   -webkit-tap-highlight-color: transparent;
 }
 ```
+
+### Retina屏幕图片优化方法
+
+#### 使用css query media
+```css
+.section {
+    background-image:url(http://assets.tangcha.tc/assets/v2/hero_iphone@1x-4e457d8ff22380a15d2dc53af0a84668.png);
+    width: 200px;
+    height: 100px;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+@media
+(-webkit-min-device-pixel-ratio: 1.3), 
+(   min--moz-device-pixel-ratio: 1.3), 
+(     -o-min-device-pixel-ratio: 2.6 / 2), 
+(        min-device-pixel-ratio: 1.3), 
+(                min-resolution: 1.3dppx) {
+    .section {
+        background-image:url(http://assets.tangcha.tc/assets/v2/hero_iphone@2x-4e457d8ff22380a15d2dc53af0a84668.png);
+    }
+}
+
+/* 更常见写法 */
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+  
+  /* Retina-specific stuff here */
+
+}
+```
+
+#### 使用webkit-image-set
+.section {
+  background-image: -webkit-image-set(url('./bg.png') 1x, url('./bg@2x.png') 2x);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
+}
+
 
 ## Android browser bug
 1. 低版本Android的dom.classList.remove只接受一个参数, 多个参数会被忽略
