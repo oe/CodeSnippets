@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 ```
 
-### 禁止数字自动变为拨号链接
+### 禁止邮箱及电话号码自动检测
 在html的head中加入以下代码即可
 ```html
 <meta name="format-detection" content="telephone=no">
+
+<meta name="format-detection" content="email=no">
 ```
+[更多meta属性](http://www.qianduan.net/meta-tags-list.html)
 
 ### 图片自适应
 将以下class应用于img标签上即可

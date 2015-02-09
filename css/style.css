@@ -271,3 +271,9 @@ div {
     outline: 1px solid #fff;
 }
 
+
+/*------------13. 文字倒序(显示顺序翻转, 包括字母顺序) ----------------*/
+.direction-rtl {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}

@@ -2,6 +2,10 @@
 /* ----------------- 针对移动设备按钮的点击效果 -------------------
 点击时添加active的类, 点击的效果在该类中实现
  */
+// 添加改行代码即可激活移动设备对active伪类的支持
+document.addEventListener("touchstart", function(){}, true);
+
+// -- 以下方法被遗弃
 $(document.body).on('touchstart','.btn',function () {
   this.classList.add('active');
 });
