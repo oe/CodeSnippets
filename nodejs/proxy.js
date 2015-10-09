@@ -20,13 +20,16 @@ function httpRequest (opt, reqBody, res) {
 }
 
 http.createServer(function (req, res) {
+  var rUrl = /https?:\/\/([^/]+)(.*)/,
+    m = rUrl.exec(req.url);
   var opt = {
-      host: 'localhost',
+      host: m[1],
       method: req.method,
-      path: req.url,
+      path: m[2],
       headers: req.headers
     },
     reqBody = '';
+
   req.on('data', function (chunk) {
     reqBody += chunk;
   });
@@ -35,3 +38,5 @@ http.createServer(function (req, res) {
   });
   console.log(req.url);
 }).listen(8888);
+
+console.log('proxy started at 8888');

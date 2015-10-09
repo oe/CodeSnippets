@@ -1,8 +1,12 @@
 {
-	"color_scheme": "Packages/User/Monokai Soda (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Monokai Soda (SL).tmTheme",
+	"font_face": "Source Code Pro",
 	"font_size": 15,
 	"ignored_packages":
 	[
+		"FreeMarker",
+		"Markdown",
+		"SublimeLinter-html-tidy",
 		"Vintage"
 	],
 	"rulers":

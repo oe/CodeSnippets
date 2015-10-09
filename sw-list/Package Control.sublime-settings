@@ -1,10 +1,16 @@
 {
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
 	"installed_packages":
 	[
 		"Alignment",
 		"AutoFileName",
 		"AVR-ASM-Sublime",
+		"Better CoffeeScript",
 		"BracketHighlighter",
+		"ConvertToUTF8",
 		"DocBlockr",
 		"EditorConfig",
 		"Emmet",
@@ -14,7 +20,11 @@
 		"Jade Build",
 		"JS Snippets",
 		"LESS",
+		"MarkdownEditing",
 		"Nodejs",
+		"Oceanic Next Color Scheme",
+		"Package Control",
+		"ReactJS",
 		"SideBarEnhancements",
 		"SublimeCodeIntel",
 		"SublimeLinter",
@@ -25,6 +35,7 @@
 		"SublimeLinter-php",
 		"SublimeLinter-pylint",
 		"Theme - Soda",
+		"Theme - Sodarized",
 		"Trimmer",
 		"URLEncode"
 	]
