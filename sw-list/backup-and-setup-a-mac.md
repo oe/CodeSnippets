@@ -17,3 +17,4 @@
 6. install [hombrew](http://brew.sh/) and [brew cask](https://github.com/caskroom/homebrew-cask)
 7. install Node via homebrew: `brew install node`, then [common npm packages](npm.md)
 8. install [quicklook plugins](https://github.com/sindresorhus/quick-look-plugins)
+9. Global Tab key: `System preferences → Keyboards → Keyboard shortcuts → All controls(at bottom)`
