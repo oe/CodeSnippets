@@ -1,4 +1,4 @@
-# 常用的npm包
+# common npm packages
 
 1. coffeescript
 2. less
@@ -9,7 +9,7 @@
 7. grunt-cli
 8. gulp
 
-使用下列命令直接安装
+install these packages via command below
 
 ```shell
 npm install coffee-script less jade coffeelint csslint jshint grunt-cli gulp -g
