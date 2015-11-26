@@ -31,6 +31,8 @@
 23. [Monodraw](http://monodraw.helftone.com/) `Ascii flow diagram, like Sketch`
 24. [karabiner](https://pqrs.org/osx/karabiner/) `Custom OSX input`
 25. [imageoptim](https://imageoptim.com/) `image optimize`
+26. [Hardware IO Tools](https://developer.apple.com/downloads/index.action?q=Hardware%20IO%20Tools) `Config Network condition`
+27. [Endurance](http://www.enduranceapp.com/) `Make your Mac run longer`
 
 ## in mac app store
 1. Read CHM `CHM Reader`
