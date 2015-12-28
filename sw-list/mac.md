@@ -33,6 +33,9 @@
 25. [imageoptim](https://imageoptim.com/) `image optimize`
 26. [Hardware IO Tools](https://developer.apple.com/downloads/index.action?q=Hardware%20IO%20Tools) `Config Network condition`
 27. [Endurance](http://www.enduranceapp.com/) `Make your Mac run longer`
+28. [Stellarium](http://www.stellarium.org) `3D simulation of the night sky`
+29. [GasMask](https://github.com/2ndalpha/gasmask) `Hosts file switcher`
+30. [Typora](http://www.typora.io/) `Markdown editor, free`
 
 ## in mac app store
 1. Read CHM `CHM Reader`
