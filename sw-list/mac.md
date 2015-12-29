@@ -36,6 +36,7 @@
 28. [Stellarium](http://www.stellarium.org) `3D simulation of the night sky`
 29. [GasMask](https://github.com/2ndalpha/gasmask) `Hosts file switcher`
 30. [Typora](http://www.typora.io/) `Markdown editor, free`
+31. [TinkerTool](http://www.bresink.com/osx/TinkerTool.html) `OSX Pro settings`
 
 ## in mac app store
 1. Read CHM `CHM Reader`
