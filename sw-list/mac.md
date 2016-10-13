@@ -38,6 +38,7 @@
 30. [Typora](http://www.typora.io/) `Markdown editor, free`
 31. [TinkerTool](http://www.bresink.com/osx/TinkerTool.html) `OSX Pro settings`
 32. [Stremio](http://www.strem.io/) `A client to watch movies and dramas`
+33. [Oversight](https://objective-see.com/products/oversight.html) `Protect your privacy by preventing malware from using mic or iSight`
 
 ## in mac app store
 1. Read CHM `CHM Reader`
