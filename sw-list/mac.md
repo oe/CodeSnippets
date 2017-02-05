@@ -74,3 +74,4 @@
 - [Google Trends](https://www.google.com/trends/hottrends/visualize)
 - [Fliqlo-Big Clock](http://fliqlo.com/)
 - [WhatColourIsIt-Clock with hexcolor](https://github.com/Jonic/WhatColourIsIt-ScreenSaver)
+- [Featured Photos](https://plus.google.com/featuredphotos)
