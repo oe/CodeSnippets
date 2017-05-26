@@ -75,3 +75,24 @@
 - [Fliqlo-Big Clock](http://fliqlo.com/)
 - [WhatColourIsIt-Clock with hexcolor](https://github.com/Jonic/WhatColourIsIt-ScreenSaver)
 - [Featured Photos](https://plus.google.com/featuredphotos)
+
+## Other utils
+### homebrew
+easiest way to manage(install/uninstall/update) softwares in Terminal
+
+Install from from <https://brew.sh/>
+
+### Screen record
+Record with built-in app `QuickTime Player` -> `File` -> `New Screen Recording` to start. 
+
+You may also need to install:
+
+1. [Keycastr](https://github.com/sdeken/keycastr) an open-source keystroke visualizer. After installing `brew`, you can install `Keycastr` by following commands:
+    ```
+    brew tap caskroom/cask # if you don't have cask
+    brew cask install keycastr
+    ```
+
+
+
+
