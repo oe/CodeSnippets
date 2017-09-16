@@ -69,6 +69,8 @@
 26. Jibber `generate placeholder`
 27. iThoughtsX `Mindnotes`
 28. Numi `keep accounts with nature language`
+29. quiver `Code Notes`
+30. Bear `markdown notes`
 
 ## screen saver
 - [Google Trends](https://www.google.com/trends/hottrends/visualize)
