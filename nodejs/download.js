@@ -12,12 +12,15 @@ process.on('unhandledRejection', (reason, p) => {
 
 // download timeout 10s
 const TIMEOUT = 10 * 1000
-async function download (options) {
+module.exports = async function download (options) {
   const { progress } = options
   const reqOptions = url.parse(options.url)
   const dest = options.dest
   const fileStream = fs.createWriteStream(dest)
 
+  reqOptions.headers = {
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+  }
   let request
   // support https
   if (reqOptions.protocol === 'https:') {
@@ -45,6 +48,7 @@ async function download (options) {
     })
     request.on('response', response => {
       const totalBytes = parseInt(response.headers['content-length'], 10)
+      console.log('response', response.statusCode)
       let downloaded = 0
 
       response.on('data', chunk => {
@@ -65,18 +69,22 @@ async function download (options) {
   })
 }
 
-download({
-  // url: 'HTTP://img.ithome.com/newsuploadfiles/2018/2/20180201_121223_433.jpg',
-  url: 'https://ww1.sinaimg.cn/large/0065oQSqly1fswhaqvnobj30sg14hka0.jpg',
-  dest: path.join(__dirname, 'abc.jpg'),
-  progress (ob) {
-    console.log('progress', ob)
-  }
-}).then(
-  resp => {
-    console.log('done', resp)
-  },
-  err => {
-    console.log('failed', err)
-  }
-)
+function request(options) {
+  // body...
+}
+
+// download({
+//   // url: 'HTTP://img.ithome.com/newsuploadfiles/2018/2/20180201_121223_433.jpg',
+//   url: 'https://ww1.sinaimg.cn/large/0065oQSqly1fswhaqvnobj30sg14hka0.jpg',
+//   dest: path.join(__dirname, 'abc.jpg'),
+//   progress (ob) {
+//     console.log('progress', ob)
+//   }
+// }).then(
+//   resp => {
+//     console.log('done', resp)
+//   },
+//   err => {
+//     console.log('failed', err)
+//   }
+// )
